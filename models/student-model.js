@@ -10,11 +10,27 @@ const studentSchema = new Schema({
 
 studentSchema.statics.addStudent = function (student) {
   return this.create(student)
-    .then(newUser => {
-      console.log('student ', newUser)
+    .then(newStudent => {
+      let studentResult = {
+        _id: newStudent._id,
+        name: newStudent.name,
+        lastName: newStudent.lastName,
+        numberList:newStudent.numberList
+      }
+      return studentResult;
     })
     .catch((error) => {
       console.log('error creating student ', error)
+    });
+};
+
+studentSchema.statics.getAll = function (student) {
+  return this.find().lean()
+    .then(allStudents => {
+      return allStudents;
+    })
+    .catch((error) => {
+      console.log('error get all Student ', error)
     });
 };
 
