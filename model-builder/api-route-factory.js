@@ -10,7 +10,9 @@ class RouterApiFactory {
     const controller = new ConstroleFactory(model);
     this.router = express.Router();
     this.router.get('/', controller.getAllRoute);
+    this.router.get('/:id', controller.getRoute);
     this.router.post('/', controller.addRoute);
+    this.router.patch('/', controller.updateRoute);
   }
 }
 
