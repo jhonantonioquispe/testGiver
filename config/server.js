@@ -8,11 +8,12 @@ const SERVER_PORT = process.env.SERVER_PORT || 3000;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routeBuilder = require('./route-builder');
+const attachmentBuilder = require('./../file-router/file-router');
 
 function enableCorsConfiguration () {
   const corsOptions = {
     origin: true,
-    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept']
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept','Access-Control-Allow-Methods']
   };
 
   app.use(cors(corsOptions));
@@ -20,7 +21,8 @@ function enableCorsConfiguration () {
 
 function startBasicConfigurations () {
   enableCorsConfiguration();
-  //app.use('/uploads', express.static(`${__dirname}./../../uploads`));
+  console.log(`direction: ${__dirname}\\..\\attachments`)
+  app.use('/attachments', express.static(`${__dirname}\\..\\attachments`));
   routeBuilder.routes(app);
   app.use('/', router);
 }
@@ -28,8 +30,8 @@ function startBasicConfigurations () {
 function start (done) {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-
   startBasicConfigurations();
+  attachmentBuilder(app);
 
   app.listen(SERVER_PORT, err => {
     if (err) {
