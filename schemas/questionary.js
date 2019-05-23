@@ -3,6 +3,7 @@
   "totalScore": 35,
   "author": "steve gregory",
   "type": "test", // this is an enum  posble values 'test', 'practice'
+  "title" : "title questionary sample 0",
   "questions": [
     {
       "questionText": "cual es el primero?",
@@ -41,6 +42,7 @@ example of questionary
   "totalScore" : 55.34,
   "author" : "jhon quispe",
   "type" : "1",
+  "title" : "title questionary sample",
   "creationDate" : "2019-02-27T04:22:02.257Z",
   "questions" : [ 
       {
@@ -113,6 +115,7 @@ const schema = {
   totalScore: { type: Number },
   author: { type: String },
   type: { type: String },
+  title: { type: String },
   creationDate: { type: Date },
   questions: [
     {
