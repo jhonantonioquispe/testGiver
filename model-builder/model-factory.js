@@ -22,12 +22,12 @@ function _setUpdateAction(schemaToBuild) {
   this.update = function(itemToUpdate) {
     return this.model.findByIdAndUpdate(itemToUpdate._id, itemToUpdate)
       .then(newItem => {
-        let result = {};
-        for(let keyProperty in schemaToBuild) {
-          result[keyProperty] = newItem[keyProperty];
-        }
-        result._id = newItem._id;
-        return result;
+        // let result = {};
+        // for(let keyProperty in schemaToBuild) {
+        //   result[keyProperty] = newItem[keyProperty];
+        // }
+        // result._id = newItem._id;
+        return this.get(newItem._id);
       })
       .catch((error) => error);
   }
