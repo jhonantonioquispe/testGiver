@@ -13,8 +13,9 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const schema = {
-  firstname: { type: String, required: true },
-  lastname: { type: String, required: true },
+  fullname: { type: String, required: true },
+  // firstname: { type: String, required: true },
+  // lastname: { type: String, required: true },
   creationDate: { type: Date },
   numberList: { type: Number, required: true },
   grade: {
