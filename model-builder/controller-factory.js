@@ -4,6 +4,7 @@ class ControllerBuilder {
     this.model = model;
     this.addRoute = (req, res, next) => {
       let data = req.body;
+      
       return this.model.create(data)
         .then(newItem => {
           res.send({ data: newItem});
@@ -40,7 +41,11 @@ class ControllerBuilder {
 
     this.getAllRoute = (req, res, next) => {
       let data = req.body;
-      return this.model.getAll()
+
+      console.log(this.model);
+      let obj = {};
+      // to do - to use the query in the find
+      return this.model.find(obj)
         .then(allItems => res.send({ data: allItems }))
         .catch((error) => {
           next(error);

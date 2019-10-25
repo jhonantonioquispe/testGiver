@@ -10,7 +10,8 @@ const schema = {
   creationDate: { type: Date },
   grade: { type: String, required: false },
   paralel: { type: String, required: false },
-  gradeNumeral: { type: Number, required: false } 
+  gradeNumeral: { type: Number, required: false },
+  gradeLiteral: { type: String } 
 }
 
 module.exports = schema;

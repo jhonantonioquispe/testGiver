@@ -60,6 +60,15 @@ class ModelBuilder {
     _setGetAllAction.call(this);
     _setGetOneAction.call(this);
     _setUpdateAction.call(this, schemaToBuild);
+    // to do - using objectQuery to use in find
+    this.find = (objectQuery) => {
+      return this.model.find(objectQuery).lean(true)
+        .then(items => {
+          return items;
+        })
+        .catch((error) =>error);
+    }
+
     this.model = mongoose.model(this.modelName, this.schema);
   }
 }
